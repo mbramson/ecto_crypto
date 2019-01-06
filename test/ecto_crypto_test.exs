@@ -2,7 +2,11 @@ defmodule EctoCryptoTest do
   use ExUnit.Case
   doctest EctoCrypto
 
-  test "greets the world" do
-    assert EctoCrypto.hello() == :world
+  test "can insert and retrieve and encrypted string" do
+    attrs = %{encrypted_string: "cats"}
+    changeset = TestSchema.changeset(%TestSchema{}, attrs)
+    assert {:ok, _} = Repo.insert(changeset)
+    assert [returned_schema] = Repo.all(TestSchema)
+    assert returned_schema.encrypted_string == "cats"
   end
 end

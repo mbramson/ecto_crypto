@@ -1,4 +1,4 @@
-defmodule TestEctoSchema do
+defmodule TestSchema do
   @moduledoc """
   Ecto Schema to be used for testing EctoCrypto Ecto Types.
   """
@@ -6,16 +6,17 @@ defmodule TestEctoSchema do
   use Ecto.Schema
   import Ecto.Changeset
 
-  schema "fake_table" do
+  schema "test_schema" do
+    field(:encrypted_string, :binary)
   end
 
-  @fields ~w()a
+  @fields ~w(encrypted_string)a
 
   def changeset(attrs) do
-    changeset(%TestEctoSchema{}, attrs)
+    changeset(%TestSchema{}, attrs)
   end
 
-  def changeset(%TestEctoSchema{} = schema, attrs) do
+  def changeset(%TestSchema{} = schema, attrs) do
     cast(schema, attrs, @fields)
   end
 end

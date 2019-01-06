@@ -29,9 +29,10 @@ defmodule EctoCrypto.MixProject do
   defp deps do
     [
       {:ecto, "~> 3.0"},
-      {:ecto_sql, "~> 3.0", only: :test},
+      {:ecto_sql, "~> 3.0", only: [:dev, :test]},
       {:ex_doc, ">= 0.0.0", only: :dev},
       {:mix_test_watch, "~> 0.6", only: :dev, runtime: false},
+      {:postgrex,   ">= 0.0.0", only: :test},
     ]
   end
 
