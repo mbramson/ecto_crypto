@@ -33,6 +33,7 @@ defmodule EctoCrypto.MixProject do
       {:ex_doc, ">= 0.0.0", only: :dev},
       {:mix_test_watch, "~> 0.6", only: :dev, runtime: false},
       {:postgrex,   ">= 0.0.0", only: :test},
+      {:stream_data, "~> 0.4", only: :test},
     ]
   end
 

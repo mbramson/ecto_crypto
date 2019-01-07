@@ -10,3 +10,4 @@ config :ecto_crypto, Repo,
   hostname: "localhost",
   pool: Ecto.Adapters.SQL.Sandbox
 
+import_config "#{Mix.env}.exs"
