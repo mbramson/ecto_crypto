@@ -32,6 +32,9 @@ defmodule EctoCrypto.Aes do
         config :ecto_crypto, EctoCrypto.Aes
           key: "0KvHAbM+8Fb8x/IDx0sj5OtRxvTTAM3nSjDfz7UX44M=" |> :base64.decode
 
+        NOTE: Please store keys in environment variables at the least! Do not
+        commit them to a git repository or otherwise store them in code.
+
         To generate a key open a console with `iex -S mix` and run:
 
         EctoCrypto.Aes.generate_key()
