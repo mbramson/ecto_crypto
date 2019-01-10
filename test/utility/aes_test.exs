@@ -1,8 +1,8 @@
-defmodule EctoCrypto.AesTest do
+defmodule EctoCrypto.Utility.AesTest do
   use ExUnit.Case, async: true
   use ExUnitProperties
 
-  alias EctoCrypto.Aes
+  alias EctoCrypto.Utility.Aes
 
   property "encryption and then decryption yields the original binary" do
     check all string <- binary() do

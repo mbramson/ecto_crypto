@@ -1,4 +1,4 @@
-defmodule EctoCrypto.Aes do
+defmodule EctoCrypto.Utility.Aes do
   @aad "AES256GCM"
 
   def encrypt(plaintext) do
