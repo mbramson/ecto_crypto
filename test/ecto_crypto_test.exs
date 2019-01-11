@@ -5,7 +5,9 @@ defmodule EctoCryptoTest do
   test "can insert and retrieve and encrypted string" do
     attrs = %{encrypted_string: "cats"}
     changeset = TestSchema.changeset(%TestSchema{}, attrs)
-    assert {:ok, _} = Repo.insert(changeset)
+    assert {:ok, struct} = Repo.insert(changeset)
+    IO.inspect struct, label: "struct"
+    
     assert [returned_schema] = Repo.all(TestSchema)
     assert returned_schema.encrypted_string == "cats"
   end

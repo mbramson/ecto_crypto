@@ -6,8 +6,10 @@ defmodule TestSchema do
   use Ecto.Schema
   import Ecto.Changeset
 
+  alias EctoCrypto.EctoTypes.EncryptedString
+
   schema "test_schema" do
-    field(:encrypted_string, :binary)
+    field(:encrypted_string, EncryptedString)
   end
 
   @fields ~w(encrypted_string)a
