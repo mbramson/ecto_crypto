@@ -1,6 +1,6 @@
-defmodule EctoCrypto.EctoTypes.EncryptedString do
+defmodule EctoCrypto.EctoTypes.EncryptedBinary do
   @moduledoc """
-  Ecto Type for an encrypted string.
+  Ecto Type for encrypting and decrypting binaries (including strings).
 
   Defines an Ecto Type which can be cast as a binary string which encrypts the
   string using AES-256 GCM before it is inserted into the database.

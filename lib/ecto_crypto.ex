@@ -1,18 +1,5 @@
 defmodule EctoCrypto do
   @moduledoc """
-  Documentation for EctoCrypto.
+  EctoCrypto is a collection ecto types for encrypting and hashing data.
   """
-
-  @doc """
-  Hello world.
-
-  ## Examples
-
-      iex> EctoCrypto.hello()
-      :world
-
-  """
-  def hello do
-    :world
-  end
 end
