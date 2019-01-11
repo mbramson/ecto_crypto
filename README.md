@@ -1,6 +1,10 @@
 # EctoCrypto
 
-**TODO: Add description**
+`EctoCrypto` provides `Ecto` types and utilities for saving data in encrypted
+or hashed formats.
+
+The goal is to provide easy to use, sane, and secure cryptographic
+functionality that can be dropped directly into `Ecto` schemas.
 
 ## Installation
 
