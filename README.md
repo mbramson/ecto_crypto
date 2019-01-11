@@ -6,6 +6,8 @@ or hashed formats.
 The goal is to provide easy to use, sane, and secure cryptographic
 functionality that can be dropped directly into `Ecto` schemas.
 
+Further documentation at https://hexdocs.pm/ecto_crypto/getting-started.html.
+
 ## Installation
 
 The package can be installed by adding `ecto_crypto` to your list of
