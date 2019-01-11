@@ -1,6 +1,15 @@
 defmodule EctoCrypto.Utility.Aes do
+  @moduledoc """
+  Utility module for encrypting and decrypting with AES-256 GCM.
+  """
+
   @aad "AES256GCM"
 
+  @doc """
+  Encrypts plaintext to ciphertext using AES-256 GCM.
+
+  Uses the key stored in application configuration.
+  """
   def encrypt(plaintext) do
     initialization_vector = :crypto.strong_rand_bytes(16) # create random Initialisation Vector
     key = get_key()    # get the *latest* key in the list of encryption keys
@@ -10,12 +19,20 @@ defmodule EctoCrypto.Utility.Aes do
     {:ok, data}
   end
 
+  @doc """
+  Decrypts ciphertext encrypted with AES-256 GCM into plaintext.
+
+  Uses they key stored in application configuration.
+  """
   def decrypt(ciphertext) do
     <<iv::binary-16, tag::binary-16, ciphertext::binary>> = ciphertext
     decrypted = :crypto.block_decrypt(:aes_gcm, get_key(), iv, {@aad, ciphertext, tag})
     {:ok, decrypted}
   end
 
+  @doc """
+  Generates a key suitable for encrypting/decrypting with AES-256 GCM.
+  """
   def generate_key() do
     :crypto.strong_rand_bytes(32) |> :base64.encode
   end
