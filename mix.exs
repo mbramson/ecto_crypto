@@ -13,7 +13,8 @@ defmodule EctoCrypto.MixProject do
       name: "EctoCrypto",
       source_url: "https://github.com/mbramson/ecto_crypto",
       package: package(),
-      deps: deps()
+      deps: deps(),
+      docs: docs()
     ]
   end
 
@@ -50,6 +51,17 @@ defmodule EctoCrypto.MixProject do
       maintainers: ["Mathew Bramson"],
       licenses: ["MIT"],
       links: %{"GitHub" => "https://github.com/mbramson/ecto_crypto"}
+    ]
+  end
+
+  defp docs() do
+    [
+      main: "getting-started",
+      formatter_opts: [gfm: true],
+      source_url: "https://github.com/mbramson/ecto_crypto",
+      extras: [
+        "docs/Getting Started.md"
+      ]
     ]
   end
 end
