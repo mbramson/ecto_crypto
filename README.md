@@ -61,3 +61,5 @@ When interacting with this schema in elixir, the field should behave like a
 regular string or binary field. At the database level, the field will be
 encrypted.
 
+The inspiration for this project comes from the excellent tutorial at
+https://github.com/dwyl/phoenix-ecto-encryption-example.
