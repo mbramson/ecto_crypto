@@ -46,7 +46,7 @@ defmodule EctoCrypto.Utility.Aes do
         Please supply a Base64 encoded encryption key in your application config
         like so:
 
-        config :ecto_crypto, EctoCrypto.Aes
+        config :ecto_crypto, EctoCrypto.Aes,
           key: "0KvHAbM+8Fb8x/IDx0sj5OtRxvTTAM3nSjDfz7UX44M=" |> :base64.decode
 
         NOTE: Please store keys in environment variables at the least! Do not
