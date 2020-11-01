@@ -26,4 +26,8 @@ defmodule EctoCrypto.EctoTypes.EncryptedBinary do
   def load(value) do
     Aes.decrypt(value)
   end
+
+  def equal?(value, other_value) do
+    value == other_value
+  end
 end
