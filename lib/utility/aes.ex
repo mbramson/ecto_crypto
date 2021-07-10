@@ -12,9 +12,7 @@ defmodule EctoCrypto.Utility.Aes do
   """
   def encrypt(plaintext) do
     initialization_vector = :crypto.strong_rand_bytes(16) # create random Initialisation Vector
-    key = get_key()    # get the *latest* key in the list of encryption keys
-    {ciphertext, tag} =
-      :crypto.block_encrypt(:aes_gcm, key, initialization_vector, {@aad, to_string(plaintext), 16})
+    {ciphertext, tag} = block_encrypt(plaintext, get_key(), initialization_vector)
     data = initialization_vector <> tag <> ciphertext # "return" iv with the cipher tag & ciphertext
     {:ok, data}
   end
@@ -26,8 +24,26 @@ defmodule EctoCrypto.Utility.Aes do
   """
   def decrypt(ciphertext) do
     <<iv::binary-16, tag::binary-16, ciphertext::binary>> = ciphertext
-    decrypted = :crypto.block_decrypt(:aes_gcm, get_key(), iv, {@aad, ciphertext, tag})
+    decrypted = block_decrypt(ciphertext, get_key(), iv, tag)
     {:ok, decrypted}
+  end
+
+  if System.otp_release() |> String.to_integer() >= 23 do
+    defp block_encrypt(plaintext, key, initialization_vector) do
+      :crypto.crypto_one_time_aead(:aes_256_gcm, key, initialization_vector, plaintext, @aad, true)
+    end
+
+    defp block_decrypt(ciphertext, key, initialization_vector, tag) do
+      :crypto.crypto_one_time_aead(:aes_256_gcm, key, initialization_vector, ciphertext, @aad, tag, false) 
+    end
+  else
+    defp block_encrypt(plaintext, key, initialization_vector) do
+      :crypto.block_encrypt(:aes_gcm, key, initialization_vector, {@aad, to_string(plaintext), 16})
+    end
+
+    defp block_decrypt(ciphertext, key, initialization_vector, tag) do
+      :crypto.block_decrypt(:aes_gcm, key, initialization_vector, {@aad, ciphertext, tag})
+    end
   end
 
   @doc """
@@ -54,7 +70,7 @@ defmodule EctoCrypto.Utility.Aes do
 
         To generate a key open a console with `iex -S mix` and run:
 
-        EctoCrypto.Aes.generate_key()
+        EctoCrypto.Utility.Aes.generate_key()
         """
 
       key -> key
