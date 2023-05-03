@@ -23,6 +23,8 @@ defmodule EctoCrypto.EctoTypes.EncryptedBinary do
     value |> to_string |> Aes.encrypt
   end
 
+  def embed_as(_), do: :dump
+
   def load(value) do
     Aes.decrypt(value)
   end
